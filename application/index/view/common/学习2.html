@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{include file="common/header"}
+	 <link rel="stylesheet" type="text/css" href="{$Think.STATIC_PATH}/css/content.css">
+	<title></title>
+</head>
+<body >
+	<div class="banner">
+		<div class="contain">
+			<div class="row">
+			<div class="col-md-3"></div>
+				<div class="col-md-5" id="form4">
+					<div>
+						<apan class="c2">留言记录：</apan>
+						<p style="display: inline-block;" class="c2">共计
+						<span id="num"></span>条留言
+						</p>
+					</div>
+					<form role="form" method="post" action="{:url('Index/test4')}" onsubmit="return validateForm()">
+						 <div class="form-group">
+           					 <label for="name" class="c2">留言题目:</label>
+    							<input type="text" class="form-control" id="topic" name="topic">
+  						</div>
+						<div class="form-group">
+    						<label for="name" class="c2">留言内容:</label>
+    						<textarea id="content1" class="form-control" rows="10" name="content"></textarea>
+ 						 </div>
+ 						 <input type="submit" id="subcontent" value="发表留言" >
+					</form>
+				</div>
+			<div class="col-md-4" id="form4">
+		</div>
+	</div>
+<body>
+</html>

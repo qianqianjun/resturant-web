@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+{include file="common/header"}
+	<title>登录/注册</title>
+	<link rel="stylesheet" type="text/css" href="{$Think.STATIC_PATH}/css/style.css">
+</head>
+<body>
+	<div class="banner">
+		<div class="contain">
+			<div class="row">
+				<div class="col-md-4"></div>
+					<div class="col-md-4" id="user">
+					<form role="form" name="myForm" method="post" action="{:url('Index/test3')}" onsubmit="return validateForm()">
+						<div class="form-group">
+    						<label for="username" class="c1">用户名</label>
+    							<input type="text" class="form-control" id="username" name="username" placeholder="请输入名称">
+  						</div>
+  						<div class="form-group">
+  							<label for="password" class="c1">密码</label>
+  							<input type="password" class="form-control" 
+  							 id="password" name="password" placeholder="6-15位密码">
+  						</div>
+  						<input type="submit" id="submit" class="btn" value="登录 ">
+  						<input type="button" id="getform2" class="btn"  value="注册">
+					</form>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="{$Think.STATIC_PATH}/js/log.js"></script>
+</html>

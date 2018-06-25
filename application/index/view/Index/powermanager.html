@@ -1,0 +1,106 @@
+<div class="main-page">
+    <h2 class="title1">用户权限管理</h2>
+    <div class="panel-group tool-tips widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
+      {volist id='vo' name='userdata'}
+      <div class="panel panel-default" style="color: blue;">
+        <div class="panel-heading" role="tab" id="heading{$vo.id}">
+          <span class="panel-title" style="width:20%;color: blue;">
+              姓名：{$vo.name}
+          </span>
+          <span class="panel-title" style="margin-left: 20px;width:25%;color: blue;">
+              账号：{$vo.account}
+          </span>
+          <span class="panel-title" style="margin-left: 20px;width:30%;color: blue;">
+              职位：{$vo.office}
+          </span>
+        
+            <span class="panel-title" style="float: right;position: relative;right: 10px;bottom: 10px;">
+                  <input type="button" value="禁止登陆" id="{$vo.id}" onclick="loginmanager(this)" class="btn btn-info">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{$vo.id}" aria-expanded="false" aria-controls="collapse{$vo.id}" class="collapsed">
+                  <input type="button" value="配置权限" id="{$vo.id}" onclick="viewset(this.id)" class="btn btn-info" style="margin-left: 10px;"></a>
+            </span>
+        </div>
+        <div id="collapse{$vo.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{$vo.id}" aria-expanded="false" style="height: 0px;">
+          <div class="panel-body">
+                <h3>配置权限</h3><br>
+                <?php
+                    $power=explode("%", $vo['power']);
+                    $powertext = array("菜品一览","用户授权","反馈管理","菜品操作","权限管理");
+                    for($i=0;$i<count($powertext);$i++)
+                    {
+                        if ($power[$i]==0) {
+                            echo "<div class='checkbox-inline'>
+                                        <label>
+                                            <input type='checkbox' value='0' class='".$vo["account"]."' onclick='changevalue(this)'>".$powertext[$i]."
+                                        </label>
+                                    </div>";
+                        }
+                        else
+                        {
+                            echo "<div class='checkbox-inline'>
+                                        <label>
+                                            <input type='checkbox' checked='' value='1' class='".$vo["account"]."' onclick='changevalue(this)'>".$powertext[$i]."
+                                        </label>
+                                    </div>";
+                        }
+                    }
+                ?>
+                <br><br>
+                <input type='button' value='确认修改' class='btn btn-info' id="{$vo.account}" onclick="fixpower(this.id)">
+          </div>
+        </div>
+      </div>
+      {/volist}
+    </div>
+
+</div>
+<script type="text/javascript">
+    function loginmanager(elem)
+    {
+        if (elem.value=="禁止登陆") {
+            var fun=0;
+        }
+        else
+            var fun=1;
+        $.post("loginmanager",{'id': elem.id , 'kind': fun},function(data,status){
+                if (status=='success') {
+                    alert("操作成功");
+                    if (fun==0)
+                        elem.value="允许登陆";
+                    else
+                        elem.value="禁止登陆";
+                }
+                else
+                {
+                    alert("操作失败，请稍后再试！");
+                }
+            });
+    }
+    function changevalue(ob)
+    {
+        if(ob.value==1)
+            ob.value=0;
+        else
+            ob.value=1;
+    }
+    function fixpower(account)
+    {
+        var selector="."+account;
+        var arr=$(selector);
+        var power="";
+        var i;
+        for(i=0;i<arr.length-1;i++)
+        {
+            power=power+arr[i].value+"%";
+        }
+        power=power+arr[i].value;
+        console.log(power);
+        $.post("fixpower",{'power':power,"account":account},function(){
+            alert("修改成功！");
+        })
+    }
+</script>
+
+
+
+

@@ -1,0 +1,159 @@
+<!-- 授权管理 -->
+<div class="main-page signup-page" >
+<h2 class="title1">管理员授权操作</h2>
+<div class="sign-up-row widget-shadow">
+	<h5>个人信息:</h5>
+<form action="{:url('Index/signup')}" name="myForm" method="post" onsubmit="return checkForm()">
+	<div class="sign-u">
+				<input type="text" name="name" placeholder="姓名" required="">
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+				<input type="text" name="tel" placeholder="电话" required="">
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+				<input type="email" name="email" placeholder="邮箱" required="">
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+		  <div class="sign-up1">
+			<h4>职位:</h4>
+		</div>
+		 <select name="office" class="form-control" >
+			<option >职位1</option>
+			<option >职位2</option>
+			<option >职位3</option>
+			<option >职位4</option>
+			<option >职位5</option>
+    	</select>		
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+		<div class="sign-up1">
+			<h4>性别* :</h4>
+		</div>
+		<div class="sign-up2">
+			<label>
+				<input type="radio" name="gender" value="男" required="">
+				男
+			</label>
+			<label>
+				<input type="radio" name="gender" value="女" required="">
+				女
+			</label>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+		<div class="sign-up1">
+			<h4>权限* :</h4>
+		</div>
+		<div class="sign-up2">
+			<label>
+				<input type="checkbox" name="power[0]" value="菜品一览">
+				菜品一览
+			</label>
+			<label>
+				<input type="checkbox" name="power[1]" value="用户授权" >
+				用户授权
+			</label>
+			<label>
+				<input type="checkbox" name="power[2]" value="反馈管理" >
+				反馈管理
+			</label>
+			<label>
+				<input type="checkbox" name="power[3]" value="菜品操作">
+				菜品操作
+			</label>
+			<label>
+				<input type="checkbox" name="power[4]" value="权限管理">
+				权限管理
+			</label>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<h6>登录信息:</h6>
+	<div class="sign-u">
+				<input type="text" placeholder="账号(默认为工号或学号)" name="account" required="">
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+				<input type="password" placeholder="密码"  name="password" required="">
+		<div class="clearfix"> </div>
+	</div>
+	<div class="sign-u">
+				<input type="password" placeholder="确认密码"  name="confirm" required="">
+		</div>
+		<div class="clearfix"> </div>
+	<div class="sub_home">
+			<input  type="Submit" value="添加">
+		<div class="clearfix"> </div>
+	</div>
+</form>
+</div>
+</div>
+<script type="text/javascript">
+	function checkForm(){
+			var password=document.forms["myForm"]["password"].value,
+			confirm=document.forms["myForm"]["confirm"].value;
+			if (password!=confirm) {
+				alert("请确认密码是否一致");
+				return false;				
+			}
+		}
+</script>
+
+<!-- <div class="row">
+	<h3 class="title1">管理员授权</h3>
+	<div class="form-three widget-shadow">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-8">
+					<input type="password" class="form-control1" id="inputPassword" placeholder="Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="checkbox" class="col-sm-2 control-label">Checkbox Inline</label>
+				<div class="col-sm-8">
+					<div class="checkbox-inline"><label><input type="checkbox"> Unchecked</label></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="selector1" class="col-sm-2 control-label">Dropdown Select</label>
+				<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1">
+					<option>Lorem ipsum dolor sit amet.</option>
+					<option>Dolore, ab unde modi est!</option>
+					<option>Illum, fuga minus sit eaque.</option>
+					<option>Consequatur ducimus maiores voluptatum minima.</option>
+				</select></div>
+			</div>
+			<div class="form-group">
+				<label for="radio" class="col-sm-2 control-label">Radio Inline</label>
+				<div class="col-sm-8">
+					<div class="radio-inline"><label><input type="radio"> 男</label></div>
+					<div class="radio-inline"><label><input type="radio"> 女</label></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="smallinput" class="col-sm-2 control-label label-input-sm">Small Input</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1 input-sm" id="smallinput" placeholder="Small Input">
+				</div>
+			</div>
+			<div class="form-group mb-n">
+				<label for="largeinput" class="col-sm-2 control-label label-input-lg">Large Input</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1 input-lg" id="largeinput" placeholder="Large Input">
+				</div>
+			</div>
+		</form>
+	</div>
+</div> -->

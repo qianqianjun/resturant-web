@@ -1,0 +1,23 @@
+<!-- this is the result of the search result of the dish input; -->
+{volist name='list' id='vo'}
+<a onclick="viewdetail(this.id)" id="{$vo.id}">
+	<div class="inbox-page" style="width: 100%;margin: 5px auto;">
+		<div class="inbox-row widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="mail "></div>
+			<div class="mail"><img src="images/i1.png" alt=""></div>
+			<div class="mail mail-name"> <h6>名称:{$vo.name}</h6> </div>
+			<div class="mail" style="width: 200px;">
+				<p>级别:<?php
+							for($i=0; $i <$vo['starnum'] ; $i++){
+								echo'<span class="glyphicon glyphicon-star" style="color:#FFFF00 ;"></span>';
+							}
+						?>
+				</p>
+			</div>
+			<div class="mail ">价格:{$vo.price}</div>
+			<div class="mail-right"><p>地点:{$vo.address}</p></div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</a>
+{/volist}

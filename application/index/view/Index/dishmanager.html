@@ -1,0 +1,80 @@
+<script type="text/javascript">
+	function confirmoperation(ob)
+	{
+		var r= confirm("你确定要执行"+ob.text+"操作么？");
+		if(r==true)
+		{
+			$.post('dropoffon',{'id':ob.id},function(){
+				alert(ob.text+"成功！");
+				if(ob.text=="下架")
+				{
+					ob.text="上架";
+				}
+				else
+				{
+					ob.text="下架";
+				}
+			})
+		}
+		else
+		{
+			alert(ob.text+"操作取消！");
+		}
+	}
+</script>
+<div class="main-page" >
+   <h2 class="title1">菜品管理</h2>
+   <div class="panel-group tool-tips widget-shadow" id="accordion" role="tablist" aria-multiselectable="true" style="width: 85%;">
+   	  {volist name='list' id='vo'}
+	  <div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="heading{$vo.id}">
+		<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{$vo.id}" aria-expanded="false" aria-controls="collapse{$vo.id}" class="collapsed">
+		  <span class="panel-title" style="width:20%;">
+			  菜名：{$vo.name}
+		  </span>
+		  <span class="panel-title" style="margin-left: 20px;width:10%;">
+		  	  价格：{$vo.price}元
+		  </span>
+		  <span class="panel-title" style="margin-left: 20px;width:20%;">
+			发布商家：{$vo.owner}
+		  </span>
+		  <span class="panel-title" style="margin-left: 20px;width:15%;">
+			星级：<?php
+					for($i=0; $i <$vo['starnum'] ; $i++){
+						echo'<span class="glyphicon glyphicon-star" style="color:#FFFF00 ;"></span>';
+					}
+				?>
+		  </span>
+		  <span class="panel-title" style="margin-left: 20px;width:16%;">
+			{$vo.time}
+		  </span>
+		</a>
+		<?php
+			if($vo["status"]==0)
+			    echo '<a id="'.$vo["id"].'" class="btn btn-info" style="float: right;position: relative;bottom: 10px;" onclick="confirmoperation(this)">下架</a>';
+			else
+			{
+				echo '<a id="'.$vo["id"].'" class="btn btn-info" style="float: right;position: relative;bottom: 10px;" onclick="confirmoperation(this)">上架</a>';
+			}
+		?>
+		</div>
+		<div id="collapse{$vo.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{$vo.id}" aria-expanded="false" style="height: 0px;">
+		  <div class="panel-body">
+		  	<div style="width: 50%;height: auto;display: inline-block;">
+		  		<img src="{$Think.STATIC_PATH}/uploads/{$vo.picture}" style="width: 100%;height: auto;position: relative;float: left;left: 10px;top: 10px;">
+		  	</div>
+		  	<div style="padding:10px;width:45%;height:250px;overflow-y: scroll;float: right;position: relative;right: 10px;top: 10px;">
+		  		<h4 style="color: blue;padding-bottom: 10px;padding-top: 5px;">描述:</h4>
+		  		{$vo.description}
+		  		<h4 style="color: blue;padding-bottom: 10px;padding-top: 5px;">发布商家</h4>
+		  		{$vo.owner}
+		  		<h4 style="color: blue;padding-bottom: 10px;padding-top: 5px;">联系电话</h4>
+		  		{$vo.ownerphone}
+		  	</div>
+		  </div>
+		</div>
+	  </div>
+	  {/volist}
+	</div>
+</div>
+

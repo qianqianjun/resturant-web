@@ -1,0 +1,96 @@
+<div class="row">
+	<h3 class="title1">新菜发布</h3>
+	<div class="form-three widget-shadow">
+		<form class="form-horizontal" action="{:url('Index/upload')}" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="focusedinput" class="col-sm-2 control-label">美食名称</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1" id="focusedinput" placeholder="请在这里输入菜名……" required="" name="name">
+				</div>
+				<div class="col-sm-2">
+					<p class="help-block"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="focusedinput" class="col-sm-2 control-label">价格</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1" id="focusedinput" placeholder="请在这里输入菜名……" required="" name="price">
+				</div>
+				<div class="col-sm-2">
+					<p class="help-block"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="selector1" class="col-sm-2 control-label">售卖地点</label>
+				<div class="col-sm-8"><select name="address" id="selector1" class="form-control1">
+					<option>紫竹餐厅第一层01窗口</option>
+					<option>紫竹餐厅第一层02窗口</option>
+					<option>紫竹餐厅第二层01窗口</option>
+					<option>紫竹餐厅第二层02窗口</option>
+					<option>紫竹餐厅第三层01窗口</option>
+					<option>紫竹餐厅第三层02窗口</option>
+					<option>紫竹餐厅第四层01窗口</option>
+					<option>紫竹餐厅第四层02窗口</option>
+				</select></div>
+			</div>
+			<div class="form-group">
+				<label for="txtarea1" class="col-sm-2 control-label">详细描述</label>
+				<div class="col-sm-8"><textarea name="description" id="txtarea1" cols="50" rows="9" class="form-control1" style="height: 400px;" required=""></textarea></div>
+			</div>
+			<div class="form-group"> 
+				<label for="exampleInputFile" class="col-sm-2 control-label">上传图片</label> 
+				<div class="col-sm-8"><input type="file" id="exampleInputFile" name="image"> 
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="radio" class="col-sm-2 control-label">菜系</label>
+				<div class="col-sm-8">
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="鲁菜">鲁菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="粤菜">粤菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="川菜">川菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="苏菜">苏菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="闽菜">闽菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="徽菜">徽菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="湘菜">湘菜</label></div>
+					<div class="radio-inline"><label><input type="radio" name="sort" required="" value="浙菜">浙菜</label></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="checkbox" class="col-sm-2 control-label">口味及制作工艺</label>
+				<div class="col-sm-8">
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[1]" value="咸鲜">咸鲜</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[2]" value="重油">重油</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[3]" value="重盐">重盐</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[4]" value="麻辣">麻辣</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[5]" value="鲜香">鲜香</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[6]" value="清淡">清淡</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[7]" value="甜">甜</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[8]" value="咸甜">咸甜</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[9]" value="香甜">香甜</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[10]" value="香辣">香辣</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[11]" value="腌制">腌制</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[12]" value="腊味">腊味</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[13]" value="清鲜">清鲜</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[0]" value="爽口">爽口</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[15]" value="炒">炒</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[16]" value="爆">爆</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[17]" value="熘">熘</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[18]" value="炸">炸</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[19]" value="烹">烹</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[20]" value="煮">煮</label></div>
+					<div class="checkbox-inline"><label><input type="checkbox" name="taste[14]" value="炖">炖</label></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="smallinput" class="col-sm-2 control-label label-input-sm">联系电话</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control1 input-sm" id="smallinput" placeholder="请输入您的联系电话" required="" name="ownerphone">
+				</div>
+			</div>
+			<div class="sub_home">
+					<input type="submit" value="提交">
+				<div class="clearfix"> </div>
+			</div>
+		</form>
+	</div>
+</div>

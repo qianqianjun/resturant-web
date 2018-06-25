@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>管理员管理界面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> 
+addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); 
+function hideURLbar()
+{ 
+	window.scrollTo(0,1); 
+}
+</script>
+
+<!-- Bootstrap Core CSS -->
+<link href="{$Think.STATIC_PATH}/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="{$Think.STATIC_PATH}/css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href="{$Think.STATIC_PATH}/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons CSS -->
+
+ <!-- side nav css file -->
+ <link href='{$Think.STATIC_PATH}/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+ <!-- side nav css file -->
+ 
+ <!-- js-->
+<script src="{$Think.STATIC_PATH}/js/jquery-1.11.1.min.js"></script>
+<script src="{$Think.STATIC_PATH}/js/modernizr.custom.js"></script>
+
+<!--webfonts-->
+<link href="{$Think.STATIC_PATH}///fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts--> 
+
+<!-- Metis Menu -->
+<script src="{$Think.STATIC_PATH}/js/metisMenu.min.js"></script>
+<script src="{$Think.STATIC_PATH}/js/custom.js"></script>
+<link href="{$Think.STATIC_PATH}/css/custom.css" rel="stylesheet">
+<!--//Metis Menu -->
+
+</head> 
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" href="index.html">北京化工大学<br><span class="dashboard_text" style="margin-top: 10px;">后勤服务集团</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+              <li class="header">操作列表</li>
+
+              <!-- 五大权限开始 -->
+              <li class="treeview" style="{$style[0]}">
+                <a href="#" onclick="Ajax('viewdish')">
+                <i class="fa fa-th"></i> <span>菜品一览</span>
+                </a>
+              </li> 
+              <li class="treeview" style="{$style[1]}">
+                <a href="#" onclick="Ajax('givepowermanager')">
+                <i class="fa fa-pie-chart"></i>
+                <span>用户授权</span>
+                </a>
+              </li>
+			  <li class="treeview" style="{$style[2]}">
+                <a href="#" onclick="Ajax('replymanager')">
+                <i class="fa fa-th"></i> <span>反馈管理</span>
+                </a>
+              </li>
+              <li class="treeview" style="{$style[3]}">
+                <a href="#">
+                <i class="fa fa-edit"></i> <span>菜品操作</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#" onclick="Ajax('dishreply')"><i class="fa fa-angle-right"></i>回复评论</a></li>
+                  <li><a href="#" onclick="Ajax('publishdish')"><i class="fa fa-angle-right"></i>新菜发布</a></li>
+                  <li><a href="#" onclick="Ajax('dishmanager')"><i class="fa fa-angle-right"></i>菜品管理</a></li>
+                </ul>
+              </li>
+              <li class="treeview" style="{$style[4]}">
+                <a href="#" onclick="Ajax('powermanager')">
+                <i class="fa fa-dashboard"></i> <span>权限管理</span>
+                </a>
+              </li>
+
+              <!-- 五大权限结束 -->
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+		
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-right">
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">	
+									<span class="prfil-img"><img src="{$Think.STATIC_PATH}/images/2.jpg" alt=""> </span> 
+									<div class="user-name">
+										<p>欢迎您</p>
+										<span>{$user}</span>
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>	
+								</div>	
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> 设置</a> </li> 
+								<li> <a href="#"><i class="fa fa-user"></i> 账号管理</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> 权限信息</a> </li> 
+								<li> <a href="{:url('Index/logout')}"><i class="fa fa-sign-out"></i> 注销登陆</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>				
+			</div>
+			<div class="clearfix"> </div>	
+		</div>
+		<!-- //header-ends -->
+
+
+<!-- **************************************************************************************** -->
+		<!-- main content start-->
+			<div id="page-wrapper">
+				<div class="table">
+					<h2 class="title1">菜品一览</h2>
+					<div class="inline-form widget-shadow">
+						<div class="form-title">
+							<h4>搜索信息</h4>
+						</div>
+						<div class="form-body">
+							<div data-example-id="simple-form-inline"> 
+								<form class="form-inline"> 
+									<div class="form-group"> 
+										<input type="text" class="form-control" id="exampleInputEmail3" placeholder="请输入要搜索的信息,如地点,描述,发布商家信息等" style="width: 600px;"> 
+									</div>
+									<button type="submit" class="btn btn-default sub">检索信息</button> 
+						       </form> 
+						   </div>
+						</div>
+					</div>
+				   <div class="panel-default" style="margin-top: 20px;">
+				   	    {volist name='list' id='vo'}
+				   	    <a onclick="viewdetail(this.id)" id="{$vo.id}">
+						<div class="inbox-page" style="width: 100%;margin: 5px auto;">
+							<div class="inbox-row widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="mail "></div>
+								<div class="mail"><img src="images/i1.png" alt=""></div>
+								<div class="mail mail-name"> <h6>名称:{$vo.name}</h6> </div>
+								<div class="mail" style="width: 200px;">
+									<p>级别:<?php
+												for($i=0; $i <$vo['starnum'] ; $i++){
+													echo'<span class="glyphicon glyphicon-star" style="color:#FFFF00 ;"></span>';
+												}
+											?>
+									</p>
+								</div>
+								<div class="mail ">价格:{$vo.price}</div>
+								<div class="mail-right"><p>地点:{$vo.address}</p></div>
+								<div class="clearfix"> </div>
+							</div>
+					    </div>
+					    </a>
+					    {/volist}
+					    {$list->render()}
+					    <script>
+							function selectdish()
+							{
+								var info=$('.form-control').val();
+								$.post("searchinfo",{"type":'Dish','info':info},function(data,status){
+									$(".panel-default").empty();
+									$(".panel-default").html(data);
+								});
+							}
+							$(".sub").click(function()
+							{
+								selectdish();
+							});
+						</script>
+				   </div>
+				</div>
+		    </div>
+<!-- **************************************************************************************** -->
+	</div>
+	<script src='{$Think.STATIC_PATH}/js/SidebarNav.min.js' type='text/javascript'></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<script src="{$Think.STATIC_PATH}/js/classie.js"></script>
+	<script src="{$Think.STATIC_PATH}/js/jquery.nicescroll.js"></script>
+	<script src="{$Think.STATIC_PATH}/js/scripts.js"></script>
+   <script src="{$Think.STATIC_PATH}/js/bootstrap.js"> </script>
+
+   <!-- 自定义script函数 -->
+   <script type="text/javascript">
+		//高谦
+		//下面为左边栏的ajax请求功能
+		function Ajax(string)
+	   	{
+	   	  	$.post("getpower",{'data':string},function(data,status){
+		        $("#page-wrapper").empty();
+		        $("#page-wrapper").html(data);
+		    });
+	   	}
+
+	   	//下面为搜索框的ajax操作
+/*
+	   	function select(string)
+	   	{
+	   		$.post("selectinfo",{'type':string})
+	   	}*/
+
+
+	   	//下面为显示弹窗与隐藏弹窗的功能;
+		function viewdetail(id)
+		{
+			$.post("getdishdetail",{'id':id},function(data,status){
+				$("#detailcontent").empty();
+				$("#detailcontent").html(data);
+				$("#detailwindow").css("display","block");
+				$("#detailcontent").css("display","block");
+				$("#contentbox").css("display","block");
+			});
+		}
+		function deletewindow()
+	   	{
+	   	  	 $("#detailwindow").css("display","none");
+	   	  	 $("#detailcontent").css("display","none");
+	   	  	 $("#contentbox").css("display","none");
+	   	}
+   </script>
+   <!-- 这里为预览全部信息的界面 -->
+   <div style="width: 100%;height: 100%;background-color: black;position: absolute;top: 0;left: 0;z-index: 10000;opacity: 0.6;color: white; display: none;" id="detailwindow" onclick="deletewindow()"> 
+   </div>
+   <div style="margin :0 auto;width: 50%;height: auto; display: none;" id="contentbox">
+    	<div style="position: absolute;top: 100px;width:50%;display: none;z-index: 10003" id="detailcontent">
+			<!-- <div style='height: 300px;background-color: white;padding:1em;'>
+				<h3>配置权限</h3>
+				<br>
+				<h4 style='color: blue;'>姓名：余中瑞</h4><br>
+				<h4 style='color: blue;'>职位：职位4</h4><br>
+				<h4 style='color: blue;'>权限信息</h4><br>
+				<div class='checkbox-inline'>
+					<label>
+						<input type='checkbox' value='1'>菜品一览
+					</label>
+				</div>
+				<div class='checkbox-inline'>
+					<label>
+						<input type='checkbox' value='2'>用户授权
+					</label>
+				</div>
+				<div class='checkbox-inline'>
+					<label>
+						<input type='checkbox' value='3'>反馈管理
+					</label>
+				</div>
+				<div class='checkbox-inline'>
+					<label>
+						<input type='checkbox' value='4'>菜品操作
+					</label>
+				</div>
+				<div class='checkbox-inline'>
+					<label>
+						<input type='checkbox' checked=' value='5'>权限管理
+					</label>
+				</div><br><br>
+				<input type='button' value='确认修改' class='btn btn-info'>
+			</div> -->
+    	</div>
+    </div>
+</body>
+</html>

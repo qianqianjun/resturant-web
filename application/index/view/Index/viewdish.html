@@ -1,0 +1,57 @@
+<!-- 菜品一览 -->
+<div class="table">
+	<h2 class="title1">菜品一览</h2>
+	<div class="inline-form widget-shadow">
+		<div class="form-title">
+			<h4>搜索信息</h4>
+		</div>
+		<div class="form-body">
+			<div data-example-id="simple-form-inline"> 
+				<form class="form-inline"> 
+					<div class="form-group"> 
+						<input type="text" class="form-control" id="exampleInputEmail3" placeholder="请输入要搜索的信息,如地点,描述,发布商家信息等" style="width: 600px;"> 
+					</div>
+					<button type="submit" class="btn btn-default sub">检索信息</button> 
+		       </form> 
+		   </div>
+		</div>
+	</div>
+   <div class="panel-default" style="margin-top: 20px;">
+   	    {volist name='list' id='vo'}
+   	    <a onclick="viewdetail(this.id)" id="{$vo.id}">
+		<div class="inbox-page" style="width: 100%;margin: 5px auto;">
+			<div class="inbox-row widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="mail "></div>
+				<div class="mail"><img src="images/i1.png" alt=""></div>
+				<div class="mail mail-name"> <h6>名称:{$vo.name}</h6> </div>
+				<div class="mail" style="width: 200px;">
+					<p>级别:<?php
+								for($i=0; $i <$vo['starnum'] ; $i++){
+									echo'<span class="glyphicon glyphicon-star" style="color:#FFFF00 ;"></span>';
+								}
+							?>
+					</p>
+				</div>
+				<div class="mail ">价格:{$vo.price}</div>
+				<div class="mail-right"><p>地点:{$vo.address}</p></div>
+				<div class="clearfix"> </div>
+			</div>
+	    </div>
+	    </a>
+	    {/volist}
+   </div>
+</div>
+<script>
+	function selectdish()
+	{
+		var info=$('.form-control').val();
+		$.post("searchinfo",{"type":'Dish','info':info},function(data,status){
+			$(".panel-default").empty();
+			$(".panel-default").html(data);
+		});
+	}
+	$(".sub").click(function()
+	{
+		selectdish();
+	});
+</script>
